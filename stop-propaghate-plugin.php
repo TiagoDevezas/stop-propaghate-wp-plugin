@@ -43,7 +43,7 @@ public function sph_assets()
     echo $args['before_widget'];
     ?>
 
-    <img src='<?php echo $instance['image'] ?>' class='team-member-image h5 w5 dib ba b--black-05 pa2'>
+    <img src='<?php echo $instance['image'] ?>' class='team-member-image dib ba b--black-05 pa1' style="max-width: 190px;">
 
     <?php
     if ( ! empty( $instance['title'] ) ) {
@@ -106,9 +106,19 @@ public function sph_assets()
 // Register custom widget areas
 function stop_propaghate_theme_register_custom_widgets_area() {
   register_sidebar( array(
-    'name'          => esc_html__( 'Team', 'stop-propaghate-theme' ),
+    'name'          => esc_html__( 'Team (Active Members)', 'stop-propaghate-theme' ),
     'id'            => 'team-1',
-    'description'   => esc_html__( 'Add widgets here.', 'stop-propaghate-theme' ),
+    'description'   => esc_html__( 'Add Team Member Widgets here.', 'stop-propaghate-theme' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s w-100 w-33-ns pa2">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title f3 mb2 mt0">',
+    'after_title'   => '</h2>',
+  ) );
+
+  register_sidebar( array(
+    'name'          => esc_html__( 'Team (Inactive Members)', 'stop-propaghate-theme' ),
+    'id'            => 'team-2',
+    'description'   => esc_html__( 'Add Team Member Widgets here.', 'stop-propaghate-theme' ),
     'before_widget' => '<section id="%1$s" class="widget %2$s w-100 w-33-ns pa2">',
     'after_widget'  => '</section>',
     'before_title'  => '<h2 class="widget-title f3 mb2 mt0">',
